@@ -1,0 +1,106 @@
+﻿@model IEnumerable<TestVersion.Models.Agent>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>AgentsData</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item">Home</li>
+                                <li class="breadcrumb-item active">DataTables</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+            <p>
+                <a href="/admin/agents/create" style="margin-left:15px">Create New</a>
+            </p>
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+
+                                                <th>Property</th>
+                                                <th>SDT</th>
+                                                <th>Facebook</th>
+                                                <th>Image</th>
+                                                <th></th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var a in Model)
+                                            {
+                                                <tr>
+                                                    <td>@a.Id</td>
+                                                    <td>
+                                                        @a.Name
+                                                    </td>
+                                                    <td>@a.Sdt</td>
+                                                    <td><a href="#">@a.Facebook</a></td>
+                                                    <td>
+                                                        <img src="/img/@a.ImageUrl" height="100" width="100" />
+                                                    </td>
+                                                    <td>
+                                                        <a asp-action="Edit" asp-route-id="@a.Id" >Edit</a> |
+                                                        <a asp-action="Details" asp-route-id="@a.Id" >Details</a> |
+                                                        <a asp-action="Delete" asp-route-id="@a.Id" >Delete</a>
+                                                    </td>
+
+                                                </tr>
+                                            }
+
+
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+
+</body>
+

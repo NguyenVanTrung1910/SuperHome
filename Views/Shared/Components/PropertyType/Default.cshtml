@@ -1,0 +1,43 @@
+﻿
+@model IEnumerable<TestVersion.Models.Type>
+
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Property Types</h1>
+            <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+        </div>
+        <div class="row g-4">
+            @{
+                int i = 1;
+            }
+            @foreach(var a in Model)
+            {
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="@(i * 0.1)s">
+                    <a class="cat-item d-block bg-light text-center rounded p-3" href="/Home/ViewList/@a.Id">
+                        <div class="rounded p-4">
+                            <div class="icon mb-3">
+                                <img class="img-fluid" src="/img/icon-apartment.png" alt="Icon">
+                            </div>
+                            <h6>@a.Name</h6>
+                            @{int tong = 0;}
+                            @foreach (var d in ViewBag.PropertyList)
+                            {
+                                @if (a.Name == d.Type.Name)
+                                {
+                                    tong+=d.Quantity;
+                                }
+                            }
+                            <span> @tong Properties</span>
+                            
+                    </div>
+                </a>
+                </div>
+                i++; 
+            }
+           
+            
+        </div>
+    </div>
+</div>

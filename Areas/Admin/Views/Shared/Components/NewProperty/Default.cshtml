@@ -1,0 +1,26 @@
+﻿@model IEnumerable<TestVersion.Models.Property>
+@{
+    int k = 0;
+}
+@foreach(var a in Model)
+{
+    k += a.Quantity;
+}
+
+
+<div class="col-lg-3 col-6" style="float:left" >
+    <!-- small box -->
+    <div class="small-box bg-info">
+        <div class="inner">
+           
+            <h3>@k</h3>
+
+            <p>New Property</p>
+        </div>
+        <div class="icon">
+            <i class="ion ion-bag"></i>
+        </div>
+        <a href="/Admin/Properties" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+

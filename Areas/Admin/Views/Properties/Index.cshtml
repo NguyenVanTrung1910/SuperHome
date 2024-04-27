@@ -1,0 +1,114 @@
+﻿@model IEnumerable<TestVersion.Models.Property>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>PropertyData</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item">Home</li>
+                                <li class="breadcrumb-item active">DataTables</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+            <p>
+                <a href="/admin/properties/create" style="margin-left:15px">Create New</a>
+            </p>
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Price</th>
+                                                <th>Address</th>
+                                                <th>Acrege</th>
+                                                <th>Type</th>
+                                                <th>Bed</th>
+                                                <th>Bath</th>
+                                                <th>Quantity</th>
+                                                <th>Description</th>
+                                                <th>Image</th>
+                                                <th></th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var a in Model)
+                                            {
+                                                <tr>
+                                                    <td>@a.Id</td>
+                                                    <td>@a.Name</td>
+                                                    <td>@a.Price</td>
+                                                    <td>@a.Address</td>
+                                                    <td>@a.Acreage</td>
+                                                    <td>@a.Type?.Name</td>
+                                                    <td>@a.Bed</td>
+                                                    <td>@a.Bath</td>
+                                                    <td>@a.Quantity</td>
+                                                    <td>@a.Description</td>
+
+                                                    <td>
+                                                        <img src="/img/@a.ImageUrl" height="100" width="100" />
+                                                    </td>
+                                                    <td>
+                                                        <a href="/admin/properties/edit/@a.Id">Edit</a> |
+                                                        <a href="/admin/properties/details/@a.Id">Details</a> |
+                                                        <a asp-action="Delete" asp-route-id="@a.Id">Delete</a>
+                                                    </td>
+
+                                                </tr>
+                                            }
+
+
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+
+</body>
